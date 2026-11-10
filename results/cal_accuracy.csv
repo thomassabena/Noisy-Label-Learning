@@ -1,0 +1,7 @@
+train_data_percent,cifar10n_noisy_accuracy_percent,cifar10_clean_accuracy_percent,cifar100n_noisy_accuracy_percent,cifar100_clean_accuracy_percent
+10,41.9,70.4,16.6,24.8
+20,73.25,72.1,27.65,36.5
+30,76.9,82.9,39,50.94
+50,84.18,89.68,48.22,63.2
+70,86.21,92.24,56.31,68.2
+100,90.15,94.4,61.71,73.2
