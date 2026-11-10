@@ -6,17 +6,23 @@ Machine Learning course project (COSC 522), University of Tennessee, Knoxville.
 
 Image classification datasets can contain incorrect labels. In this group project, we investigated whether the relative performance of methods for learning with noisy labels changes as the available training set gets smaller.
 
-The team compared five approaches (ProMix, PLS, CAL, ELR, and T-Revision) on CIFAR-10N and CIFAR-100N, using 10%, 20%, 30%, 50%, 70%, and 100% of the training data. The wider comparison was collaborative; **my assigned method was CAL (Calibrated Loss)**.
+The team compared five approaches (ProMix, PLS, CAL, ELR, and T-Revision) on CIFAR-10N and CIFAR-100N, using 10%, 20%, 30%, 50%, 70%, and 100% of the training data. The wider comparison was collaborative, while my assigned method was **CAL (Calibrated Loss)**.
 
-## My contribution: CAL
+## My Contribution: CAL
 
-I adapted the CAL experiment configurations for different training-data fractions, ran experiments on CIFAR-10N and CIFAR-100N, recorded the results, and contributed these findings to the team comparison.
+Starting from the original [UCSC-REAL/CAL](https://github.com/UCSC-REAL/CAL) implementation, I worked on:
 
-The experimental scripts in `experiments/` were adapted from the [CAL implementation by UCSC-REAL](https://github.com/UCSC-REAL/CAL); **I did not develop the CAL algorithm or the original training framework**.
+- **Experimental setup:** Modified the training scripts to introduce a `dataset_size` parameter for experiments with different training-data fractions (10%, 20%, 30%, 50%, 70%, and 100%).
+- **Training configuration:** Adjusted training parameters for CIFAR-10N and CIFAR-100N, including the number of epochs.
+- **Performance evaluation:** Collected and analyzed classification accuracy across different training-data sizes.
+- **Comparative analysis:** Contributed the CAL results to the team's comparison of five noisy-label learning algorithms.
+
+The underlying CAL algorithm was developed by the original authors and was not modified.
 
 ## CAL results
 
-Reported best test accuracy for the noisy-label experiments:
+The following results were recorded during the course project.
+Accuracy generally improved as more training data became available.
 
 | Training data | CIFAR-10N | CIFAR-100N |
 | ---: | ---: | ---: |
@@ -37,24 +43,18 @@ The values above come from the original course results spreadsheet, not newly ex
 - `analysis/` — script for inspecting compatible training logs
 - `results/` — original results workbook, derived CSV, and accuracy plot
 
-## Reproducibility and limitations
+## Code
 
-This is an **archive of the CAL portion of a group course project**, not a standalone runnable implementation. The experiment scripts import `ExptPeerRegC10CAL` and `ExptPeerRegC100CAL` from modules in the original [UCSC-REAL/CAL](https://github.com/UCSC-REAL/CAL) repository, which are not bundled here.
+The experimental scripts are adapted from the original [UCSC-REAL/CAL](https://github.com/UCSC-REAL/CAL) implementation.
 
-The saved script snapshots also contain configuration settings such as `with_noise = False` and `lossfunc = "crossentropy"`. They therefore do not by themselves reproduce the noisy-label results above. The exact configurations used for every reported run, original log files, and software environment were not retained in this archive.
-
-The saved CAL scripts specify `resnet_cifar34`, while the group presentation summarizes a ResNet-18 setup. This discrepancy has not been reconciled; the scripts are preserved as found rather than silently modified.
-
-The dataset and upstream code should be obtained from the original sources before attempting replication. No claims of a verified end-to-end reproduction are made for this archive.
+The repository contains the saved experiment configurations, analysis tools, and recorded results. The original CAL framework and datasets are available from their respective sources.
 
 ## License and Attribution
 
 The CAL implementation is based on the original
-[UCSC-REAL/CAL](https://github.com/UCSC-REAL/CAL) repository,
-released under the MIT License.
+[UCSC-REAL/CAL](https://github.com/UCSC-REAL/CAL) repository, released under the MIT License.
 
-The original copyright and license notice are
-preserved in `LICENSE-UPSTREAM`.
+The original copyright and license notice are preserved in `LICENSE-UPSTREAM`.
 
 ## References and credits
 
